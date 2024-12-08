@@ -1,3 +1,12 @@
+# for scala
 key.alias: your_key_alias
 key.store: /path/to/your/key/store
 key.store.password: your_key_password
+
+for gradle
+sdk.dir=/path/to/your/android_sdk
+
+key.store=/path/to/your/key/store
+key.store.password=your_key_password
+key.alias=your_key_alias
+key.alias.password=your_alias_password

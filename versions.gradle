@@ -1,0 +1,34 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.compile_sdk = 32
+build_versions.build_tools = "30.0.2"
+build_versions.target_sdk = 30
+build_versions.version_code = 6
+build_versions.version_name = "0.0.6"
+ext.build_versions = build_versions
+
+def deps = [:]
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:7.3.0"
+deps.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
+
+def shadowsocks = [:]
+shadowsocks.plugin = "com.github.shadowsocks:plugin_2.11:0.0.2"
+deps.shadowsocks = shadowsocks
+
+ext.deps = deps
+
+def addRepos(RepositoryHandler handler) {
+    handler.maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+    handler.maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
+    handler.maven { url 'https://repo1.maven.org/maven2' }
+    handler.google()
+}
+
+ext.addRepos = this.&addRepos
